@@ -52,8 +52,6 @@ namespace nideriji_export.helpers
             }
             catch (Exception)
             {
-
-
                 return await Task.Run(() => false);
             }
 

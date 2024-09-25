@@ -65,7 +65,7 @@ namespace nideriji_export
                 Console.WriteLine("退出程序");
                 return;
             }
-            Console.WriteLine("是否开始同步日记：输入 1 开始，输入其他结束 ");
+            Console.Write("是否开始同步日记：输入 1 开始，输入其他结束 ");
             flag = Console.ReadLine();
             if (flag != null && flag == "1")
             {
@@ -78,21 +78,22 @@ namespace nideriji_export
                 Console.WriteLine("退出程序");
                 return;
             }
-
-            Console.WriteLine("是否开始删除日记（会删除软件中的日记，慎选）：输入 1 开始，输入其他结束 ");
+            // 注销掉
+            //Console.Write("是否开始删除日记（会删除软件中的日记，慎选）：输入 1 开始，输入其他结束 ");
+            //flag = Console.ReadLine();
+            //if (flag != null && flag == "1")
+            //{
+            //    Console.WriteLine("开始删除日记");
+            //    await DeleteAddDailyData(http, sqlDbContext);
+            //    Console.WriteLine("删除日记完成");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("退出程序");
+            //    return;
+            //}
+            Console.WriteLine("输入任意键，退出程序");
             flag = Console.ReadLine();
-            if (flag != null && flag == "1")
-            {
-                Console.WriteLine("开始删除日记");
-                await DeleteAddDailyData(http, sqlDbContext);
-                Console.WriteLine("开始删除日记");
-            }
-            else
-            {
-                Console.WriteLine("退出程序");
-                return;
-            }
-
 
         }
 
@@ -135,7 +136,7 @@ namespace nideriji_export
 
                 if (ud.Saved == 1)
                 {
-                    Console.WriteLine("已保存过，不再保存");
+                    Console.WriteLine($"已保存过，不再保存 {ud.DailyId}");
                     continue;
                 }
                 var daily = await http.GetDailyByUserIdWidthDaily(ud.UserId, ud.DailyId);
